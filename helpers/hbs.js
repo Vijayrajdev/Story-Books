@@ -21,7 +21,7 @@ module.exports = {
         if (storyUser._id.toString() == loggedUser._id.toString()) {
             if (floating) {
                 return `<a href="/stories/edit/${storyId}" class="btn-floating halfway-fab blue"><i
-                class="fas fa-edit fa-small"
+                class="fas fa-pencil-alt fa-small"
                 ></i></a>`
             } else {
                 ` <a href="stories/edit/${storyId}"><i class="fas fa-dit"></i></a>`
@@ -29,6 +29,18 @@ module.exports = {
         } else {
             return ''
         }
+    },
+    select: function (selected, options) {
+        return options
+            .fn(this)
+            .replace(
+                new RegExp(' value="' + selected + '"'),
+                '$& selected="selected"'
+            )
+            .replace(
+                new RegExp('>' + selected + '</option>'),
+                ' selected="selected"$&'
+            )
     },
 };
 
